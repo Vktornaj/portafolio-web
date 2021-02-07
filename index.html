@@ -14,34 +14,51 @@
 <body>
 
     <div class="wrapper">
-        <nav class="nav-bar">
+        <nav class="nav-bar" id="nav-bar-id">
             <span>Eduardo Garcia</span>
             <div class="nav-end">
                 <ul>
-                    <li><a href="#">Habilidades</a></li>
-                    <li><a href="#">Tecnologias</a></li>
-                    <li><a href="#">Portafolio</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#nav-bar-id">Sobre mi</a></li>
+                    <li><a href="#tecnologias">Tecnologias</a></li>
+                    <li><a href="#portafolio">Portafolio</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
                 </ul>
                 <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
+                    <input type="checkbox" id="switch-mode">
+                    
+                    <span class="slider round">                        
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </span>
                 </label>
+                <script>
+                    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                        document.getElementById('switch-mode').checked = 1;
+                    } else {
+                        document.getElementById('switch-mode').checked = 0;
+                    }
+                </script>
             </div>
             
         </nav>
     
-        <div class="sobre-mi">
+        <div class="sobre-mi" id="sobre-mi">
             <div class="redes">
-                <div class="icon">
-                    <i class="fab fa-twitter"></i>
-                </div>
-                <div class="icon">
-                    <i class="fab fa-facebook-f"></i>
-                </div>
-                <div class="icon">
-                    <i class="fab fa-linkedin-in"></i>
-                </div>
+                <a href="https://twitter.com/victor2211812" target="_blank">
+                    <div class="icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                </a>
+                <a href="https://www.facebook.com/vktornaj/" target="_blank">
+                    <div class="icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/víctor-eduardo-garcía-nájera-8a7a00175" target="_blank">
+                    <div class="icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                </a>
             </div>
             <h1>Soy Desarrollador <br/> Web</h1>
             <br>
@@ -51,8 +68,8 @@
                 manera eficiente.
             </span>
             <div class="accesos-rapidos">
-                <a href="#">Portafolio</a>
-                <a href="#">Contactar</a>
+                <a href="#portafolio">Portafolio</a>
+                <a href="#cv">CV</a>
             </div>   
             <div class="ir-abajo">
               <button class="boton-ir-abajo">
@@ -62,7 +79,7 @@
             </div>
             
         </div>
-        <div class="imagen">
+        <div class="imagen" id="imagen">
             <div class="fondo-foto-perfil">
             </div>
             <div class="mascara-foto-perfil">
@@ -70,7 +87,8 @@
             </div>
         </div>
 
-        <div class="seccion-habilidades" id="habilidades">
+        <div class="seccion-tecnologias" id="tecnologias">
+
             <h2 class="titulo-seccion">
                 Habilidades de programacion
             </h2>
@@ -92,9 +110,7 @@
                     <h3>Algoritmia</h3>
                 </div>
             </div>
-        </div>
 
-        <div class="seccion-tecnologias">
             <h2 class="titulo-seccion">Tecnologias que domino</h2>
             <div class="lista-tecnologias">
                 <div class="elemento-tecnologias">
@@ -139,9 +155,67 @@
             </div>
         </div>
 
-        <div class="seccion-portafolio">
+        <div class="seccion-portafolio" id="portafolio">
             <h2 class="titulo-seccion">Portafolio</h2>
         </div>
+
+        <footer class="footer">
+            <div class="fila-1">
+                Creado por Eduardo Garcia <br>
+                2021
+            </div>
+            <div class="fila-2">
+                <span>Redes Sociales:</span>
+                <div class="redes">
+                    <a href="https://twitter.com/victor2211812" target="_blank">
+                        <div class="icon">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                    </a>
+                    <a href="https://www.facebook.com/vktornaj/" target="_blank">
+                        <div class="icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/víctor-eduardo-garcía-nájera-8a7a00175" target="_blank">
+                        <div class="icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+
+        <div class="nav-movil">
+            <ul>
+                <li>
+                    <a href="#nav-bar-id">
+                        <i class="fas fa-home"></i>
+                        Sobre mi
+                    </a>
+                </li>
+                <li>
+                    <a href="#tecnologias">
+                        <i class="fas fa-cubes"></i>
+                        Tecnologias
+                    </a>
+                </li>
+                <li>
+                    <a href="#portafolio">
+                        <i class="fas fa-folder"></i>
+                        Portafolio
+                    </a>
+                </li>
+                <li>
+                    <a href="#contacto">
+                        <i class="fas fa-id-card"></i>
+                        Contacto
+                    </a>
+                </li>
+            </ul>
+        </div>
+
     </div>
 
     <script src="./main.js"></script>

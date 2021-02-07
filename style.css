@@ -3,15 +3,38 @@
     --color-azul-fuerte: #162540;
     --color-azul-claro: #5794FF;
     --color-azul-oscuro:#2B4A80;
-    /* --color-azul-oscuro:#2c2c2c; */
     --color-azul-claro2: #4170C2;
     --color-azul-vivo: #4E86E6;
+    --color-oscuro-transparente: #91919191;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-azul-fuerte: #272729;
+        --color-azul-claro: #1646a0;
+        --color-azul-oscuro:#101929;
+        --color-azul-claro2: #0c2d74;
+        --color-azul-vivo: #0046be;
+        --color-oscuro-transparente: #25304291;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --color-azul-fuerte: #162540;
+        --color-azul-claro: #5794FF;
+        --color-azul-oscuro:#2B4A80;
+        --color-azul-claro2: #4170C2;
+        --color-azul-vivo: #4E86E6;
+        --color-oscuro-transparente: #91919191;
+    }
 }
 
 /** Etiquetas **/
 body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--color-azul-oscuro); 
+    transition: background-color 1s;
     position: relative;
 }
 
@@ -41,9 +64,6 @@ ul li a {
     text-decoration: none;
 }
 
-ul li a:hover {
-    color: var(--color-azul-vivo);
-}
 /** Contenedor **/
 .wrapper {
     margin-left: auto;
@@ -57,9 +77,9 @@ ul li a:hover {
     grid-auto-rows: minmax(100px, auto);
     grid-template-areas: "navbar navbar navbar"
                             "sobremi sobremi imagen"
-                            "habilidades habilidades habilidades"
                             "tecnologias tecnologias tecnologias"
-                            "portafolio portafolio portafolio";
+                            "portafolio portafolio portafolio"
+                            "footer footer footer";
 }
 
 @media (max-width: 768px) {
@@ -70,18 +90,22 @@ ul li a:hover {
                             "navbar navbar navbar"
                             "imagen imagen imagen"
                             "sobremi sobremi sobremi"
-                            "habilidades habilidades habilidades"
                             "tecnologias tecnologias tecnologias"
-                            "portafolio portafolio portafolio";
+                            "portafolio portafolio portafolio"
+                            "footer footer footer";
     }
 }
 
 /** Generales **/
 .titulo-seccion {
-    margin-left: 2rem;
     text-shadow: 2px 2px 5px var(--color-azul-fuerte);
     font-size: 2rem;
     font-weight: 100;
+}
+
+.redes > a {
+    text-decoration: none;
+    color: white;
 }
 
 /** Navbar **/
@@ -104,11 +128,16 @@ ul li a:hover {
     left: 0;
     z-index: -1;
     background-color: var(--color-azul-fuerte);
+    transition: background-color 1s;
 }
 
 .nav-bar span {
     font-weight: 700;
     font-size: 2rem;
+}
+
+.nav-end > ul > li > a:hover {
+    color: var(--color-azul-vivo);
 }
 
 .nav-end {
@@ -147,9 +176,16 @@ ul li a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: var(--color-azul-claro2);
     -webkit-transition: .4s;
     transition: .4s;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.slider > i {
+    font-size: 1rem;
 }
 
 .slider:before {
@@ -157,19 +193,19 @@ ul li a:hover {
     content: "";
     height: 20px;
     width: 20px;
-    left: 3px;
-    bottom: 2px;
+    bottom: 2.5px;
+    left: 2px;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
 }
 
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: var(--color-azul-claro);
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px var(--color-azul-claro);
 }
 
 input:checked + .slider:before {
@@ -183,7 +219,7 @@ input:checked + .slider:before {
 }
 
 .slider.round:before {
-border-radius: 50%;
+    border-radius: 50%;
 }
 
 @media (max-width: 768px) {
@@ -194,8 +230,8 @@ border-radius: 50%;
 
     .slider:before {
         height: 26px;
-        width: 26px;
         left: 4px;
+        width: 26px;
         bottom: 4px;
     }
 
@@ -265,7 +301,10 @@ border-radius: 50%;
 }
 
 .accesos-rapidos > :nth-child(2) {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
     background-color: var(--color-azul-claro);
+    transition: background-color border-color 1s;
 }
 
 @media screen and (min-width: 601px) {
@@ -358,6 +397,7 @@ border-radius: 50%;
 .fondo-foto-perfil {
     position: absolute;
     background-color: var(--color-azul-claro);
+    transition: background-color 1s;
     height: 20rem;
     width: 20rem;
     border-radius: 50%;
@@ -425,27 +465,19 @@ border-radius: 50%;
 }
 
 /** Seccion habilidades **/
-.seccion-habilidades {
-    grid-area: habilidades;
-    flex-direction: column;
-    color: white;
-}
-
 .lista-habilidades {
-    margin-top: 5rem;
     display: flex;
-    max-width: 100%;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 
 .elemento-habilidad {
-    display: flex;
     align-items: center;
     display: flex;
-    flex-direction: column;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .elemento-habilidad > i {
@@ -458,6 +490,7 @@ border-radius: 50%;
     justify-content: center;
     align-items: center;
     background-color: var(--color-azul-fuerte);
+    transition: background-color 1s;
 }
 
 .elemento-habilidad > h3 {
@@ -465,6 +498,12 @@ border-radius: 50%;
     min-width: 15rem;
     font-size: 1rem;
     text-shadow: 2px 2px 5px var(--color-azul-fuerte);
+}
+
+@media (min-width: 768px) {
+    .elemento-habilidad {
+        flex-direction: column;
+    }
 }
 
 /** Seccion Tecnologias **/
@@ -484,10 +523,107 @@ border-radius: 50%;
 .elemento-tecnologias {
     margin-top: 4rem;
     padding: 1rem;
+    margin-right: 1rem;
 }
 
 /** Portfolio **/
 .seccion-portafolio {
     color: white;
     grid-area: portafolio;
+}
+
+/* Footer */
+.footer {
+    color: white;
+    height: 200px;
+    grid-area: footer;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+}
+
+.footer::before {
+    content: "";
+    background-color: var(--color-azul-fuerte);
+    transition: background-color 1s;
+    position: absolute;
+    height: 200px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.fila-1 {
+    margin-top: 2.5rem;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.fila-2 {
+    margin-top: 2.5rem;
+}
+
+.fila-2 > span {
+    display: block;
+    margin-bottom: 1.3rem;
+    width: 100%;
+}
+
+/* Navegacion Movil */
+.nav-movil {
+    position: fixed;
+    bottom: 0;
+    /* background-color: var(--color-azul-claro2); */
+    height: 50px;
+    width: 100%;
+    left: 0;
+    display: none;
+    background-color: var(--color-azul-claro2);
+    transition: background-color 1s;
+}
+
+/* si backdrop es soportado: transparencia y blur */
+@supports ((-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))) {
+    .nav-movil {
+        background-color: var(--color-oscuro-transparente);
+        transition: background-color 1s;
+        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);
+    }
+}
+
+.nav-movil > ul {
+    display: flex;
+    height: 100%;
+}
+
+.nav-movil > ul > li {
+    margin-left: 0;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 0.7rem;
+}
+
+.nav-movil > ul > li:hover {
+    background-color: var(--color-azul-claro);
+}
+
+.nav-movil > ul > li > a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-movil > ul > li > a > i {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .nav-movil {
+        display: block;
+    }
 }
