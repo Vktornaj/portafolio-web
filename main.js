@@ -89,3 +89,39 @@ window.matchMedia('(prefers-color-scheme: dark)').addListener((e) => {
     deactivarOscuro();
   }
 });
+
+// Portafolio con carrusel
+const carruselContainer = document.getElementsByClassName('carrusel')[0];
+const carrusel = document.getElementById('carruselId');
+const elemento = document.getElementsByClassName('elemento-carrusel')[0];
+const btnAtras = document.getElementsByClassName('carrusel-btn-atras')[0];
+const btnAdelante = document.getElementsByClassName('carrusel-btn-adelante')[0];
+let carruselPos = 0;
+const tElemento = 270;
+const nElementos = 5;
+const marginR = 40;
+
+function scroll_x(npos) {
+  console.log(carruselPos);
+  carrusel.scroll({ 
+    top: 0,
+    left: npos,
+    behavior: 'smooth'
+  });
+}
+
+btnAtras.addEventListener('click', function() {
+  if (carruselPos <= 0)
+  return;
+  carruselPos -= tElemento;
+  scroll_x(carruselPos);
+});
+
+btnAdelante.addEventListener('click', function() {
+  if (carruselPos >= tElemento * nElementos - marginR - carruselContainer.clientWidth)
+  return;
+  carruselPos += tElemento;
+  scroll_x(carruselPos);
+});
+
+

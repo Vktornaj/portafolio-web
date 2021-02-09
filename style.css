@@ -6,6 +6,7 @@
     --color-azul-claro2: #4170C2;
     --color-azul-vivo: #4E86E6;
     --color-oscuro-transparente: #91919191;
+    --color-contraste-fuerte: #00F59B;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -307,6 +308,14 @@ input:checked + .slider:before {
     transition: background-color border-color 1s;
 }
 
+.accesos-rapidos :hover {
+    border: 0.2rem solid var(--color-azul-vivo);
+}
+
+.accesos-rapidos > :nth-child(2):hover {
+    background-color: var(--color-azul-vivo);
+}
+
 @media screen and (min-width: 601px) {
     .sobre-mi > :nth-child(2) {
         font-size: 4rem;
@@ -523,7 +532,7 @@ input:checked + .slider:before {
 .elemento-tecnologias {
     margin-top: 4rem;
     padding: 1rem;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
 }
 
 /** Portfolio **/
@@ -532,13 +541,91 @@ input:checked + .slider:before {
     grid-area: portafolio;
 }
 
+.carrusel {
+    height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.carrusel-btn {
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.carrusel-btn-atras {
+    position: absolute;
+    top: calc(50% - 20px);
+    left: -20px;
+}
+
+.carrusel-btn-adelante {
+    position: absolute;
+    top: calc(50% - 20px);
+    right: -20px;
+}
+
+.carrusel-contenido {
+    height: 302px;
+    display: flex;
+    overflow-x: hidden;
+}
+
+.elemento-carrusel {
+    border: 1px solid white;
+    height: 300px;
+    min-width: 230px;
+    margin-right: 40px;
+}
+
+.elemento-carrusel:hover {
+    background-color: var(--color-azul-fuerte);
+}
+
+@media (max-width: 768px) {
+    .carrusel-contenido {
+        overflow-x: scroll;
+    }
+
+    .carrusel-btn {
+        display: none;
+    }
+}
+
+/* Mas elementos */
+.mas-proyectos {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.mas-proyectos > span :nth-child(1) {
+    font-size: 1rem;
+}
+
+.mas-proyectos > span > a {
+    text-decoration: none;
+    color: white;
+}
+
+.mas-proyectos > span > a:hover {
+    color: var(--color-azul-claro);
+}
+
+.mas-proyectos > span > a :nth-child(1) {
+    font-size: 2rem;
+}
+
 /* Footer */
 .footer {
     color: white;
     height: 200px;
     grid-area: footer;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: row-reverse;
 }
 
@@ -557,11 +644,13 @@ input:checked + .slider:before {
 .fila-1 {
     margin-top: 2.5rem;
     font-size: 0.8rem;
-    text-align: center;
+    text-align: left;
+    width: 50%;
 }
 
 .fila-2 {
     margin-top: 2.5rem;
+    width: 50%;
 }
 
 .fila-2 > span {
