@@ -18,19 +18,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Eduardo Garcia</title>
+    <title>Eduardo García</title>
 </head>
 <body>
 
     <div class="wrapper">
         <nav class="nav-bar" id="nav-bar-id">
-            <span>Eduardo Garcia</span>
+            <span>Eduardo García</span>
             <div class="nav-end">
                 <ul>
-                    <li><a href="#nav-bar-id">Sobre mi</a></li>
-                    <li><a href="#tecnologias">Tecnologias</a></li>
+                    <li><a href="#nav-bar-id">Sobre mí</a></li>
+                    <li><a href="#tecnologias">Tecnologías</a></li>
                     <li><a href="#portafolio">Portafolio</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#contacto-id">Contacto</a></li>
                 </ul>
                 <label class="switch">
                     <input type="checkbox" id="switch-mode">
@@ -78,7 +78,7 @@
             </span>
             <div class="accesos-rapidos">
                 <a href="#portafolio">Portafolio</a>
-                <a href="#cv">CV</a>
+                <a href="https://drive.google.com/file/d/1ReqRWx1ZKdMaAM3Ank7pQmGnNO-wATOr/view?usp=sharing" target="blank">CV</a>
             </div>   
             <div class="ir-abajo">
               <button class="boton-ir-abajo">
@@ -99,12 +99,12 @@
         <div class="seccion-tecnologias" id="tecnologias">
 
             <h2 class="titulo-seccion">
-                Habilidades de programacion
+                Habilidades de programación
             </h2>
             <div class="lista-habilidades moviendo">
                 <div class="elemento-habilidad">
                     <i class="fab fa-java"></i>
-                    <h3>Programacion orientada <br/> a objetos</h3>
+                    <h3>Programación orientada <br/> a objetos</h3>
                 </div>
                 <div class="elemento-habilidad">
                     <i class="fas fa-sort-numeric-up-alt"></i>
@@ -120,7 +120,7 @@
                 </div>
             </div>
 
-            <h2 class="titulo-seccion">Tecnologias que domino</h2>
+            <h2 class="titulo-seccion">Tecnologías</h2>
             <div class="lista-tecnologias">
                 <div class="elemento-tecnologias">
                     <i class="fab fa-html5"></i>
@@ -188,22 +188,32 @@
                 </div>
                 <button class="carrusel-btn carrusel-btn-adelante"> &gt </button>
             </div>
-                <div class="mas-proyectos">
-                    <span>
-                        <span>Ver mas proyectos en:</span>
-                        <br>
-                        <br>
-                        <a href="www.github.com">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub</span>
-                        </a>
-                    </span>
-                </div>
+            <div class="mas-proyectos">
+                <span>
+                    <span>Ver más proyectos en:</span>
+                    <br>
+                    <br>
+                    <a href="https://github.com/Vktornaj" target="blank">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+
+        <div class="contacto" id="contacto-id">
+            <span>Envíame un mensaje</span>
+            <form action="/contact/message-text" method="post">
+                <input type="text" name="user_name" id="name" placeholder="Nombre">
+                <input type="email" name="user_mail" id="mail" placeholder="E-mail">
+                <textarea type="text" name="message" id="msg" placeholder="Mensaje"></textarea>
+                <input type="submit" value="Enviar">
+            </form>
         </div>
 
         <footer class="footer">
             <div class="fila-1">
-                Desarrollado por Eduardo Garcia. © 2021.
+                Desarrollado por Eduardo García. © 2021.
             </div>
             <div class="fila-2">
                 <span>Redes Sociales:</span>
@@ -233,13 +243,13 @@
                 <li>
                     <a href="#nav-bar-id">
                         <i class="fas fa-home"></i>
-                        Sobre mi
+                        Sobre mí
                     </a>
                 </li>
                 <li>
                     <a href="#tecnologias">
                         <i class="fas fa-cubes"></i>
-                        Tecnologias
+                        Tecnologías
                     </a>
                 </li>
                 <li>
@@ -249,7 +259,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#contacto">
+                    <a href="#contacto-id">
                         <i class="fas fa-id-card"></i>
                         Contacto
                     </a>

@@ -7,6 +7,8 @@
     --color-azul-vivo: #4E86E6;
     --color-oscuro-transparente: #91919191;
     --color-contraste-fuerte: #00F59B;
+    --color-fondo-textos: #FFF;
+    --color-texto-primario: #000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,6 +19,8 @@
         --color-azul-claro2: #0c2d74;
         --color-azul-vivo: #0046be;
         --color-oscuro-transparente: #25304291;
+        --color-fondo-textos: #1D1E20;
+        --color-texto-primario: #FFF;
     }
 }
 
@@ -28,6 +32,8 @@
         --color-azul-claro2: #4170C2;
         --color-azul-vivo: #4E86E6;
         --color-oscuro-transparente: #91919191;
+        --color-fondo-textos: #FFF;
+        --color-texto-primario: #000;
     }
 }
 
@@ -80,6 +86,7 @@ ul li a {
                             "sobremi sobremi imagen"
                             "tecnologias tecnologias tecnologias"
                             "portafolio portafolio portafolio"
+                            "contacto contacto contacto"
                             "footer footer footer";
 }
 
@@ -93,6 +100,7 @@ ul li a {
                             "sobremi sobremi sobremi"
                             "tecnologias tecnologias tecnologias"
                             "portafolio portafolio portafolio"
+                            "contacto contacto contacto"
                             "footer footer footer";
     }
 }
@@ -427,10 +435,10 @@ input:checked + .slider:before {
     margin-top: -2rem;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 950px) {
     .imagen {
         height: 12rem;
-        padding-top: 50%;
+        padding-top: 70%;
     }
 
     .fondo-foto-perfil {
@@ -617,6 +625,55 @@ input:checked + .slider:before {
 
 .mas-proyectos > span > a :nth-child(1) {
     font-size: 2rem;
+}
+
+/* Contacto */
+.contacto {
+    grid-area: contacto;
+}
+
+.contacto > span {
+    color: white;
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.contacto > form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contacto > form > :nth-child(n) {
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 1mm;
+    border: 1px solid var(--color-azul-claro2);
+}
+
+.contacto > form > input {
+    height: 30px;
+    color: var(--color-texto-primario);
+    background-color: var(--color-fondo-textos);
+}
+
+.contacto > form > textarea {
+    height: 200px;
+    resize: none;
+    color: var(--color-texto-primario);
+    background-color: var(--color-fondo-textos);
+}
+
+.contacto > form > [type=submit] {
+    color: white;
+    background-color: var(--color-azul-claro2);
+}
+
+.contacto > form > [type=submit]:hover {
+    background-color: var(--color-azul-claro);
 }
 
 /* Footer */

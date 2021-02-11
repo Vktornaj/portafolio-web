@@ -55,6 +55,8 @@ function activarOscuro() {
   root.style.setProperty('--color-azul-claro2', '#0c2d74');
   root.style.setProperty('--color-azul-vivo', '#0046be');
   root.style.setProperty('--color-oscuro-transparente', '#25304291');
+  root.style.setProperty('--color-fondo-textos', '#1D1E20');
+  root.style.setProperty('--color-texto-primario', '#FFF');
 }
 
 function deactivarOscuro() {
@@ -65,6 +67,8 @@ function deactivarOscuro() {
   root.style.setProperty('--color-azul-claro2', '#4170C2');
   root.style.setProperty('--color-azul-vivo', '#4E86E6');
   root.style.setProperty('--color-oscuro-transparente', '#91919191');
+  root.style.setProperty('--color-fondo-textos', '#FFF');
+  root.style.setProperty('--color-texto-primario', '#000');
 }
 
 if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
