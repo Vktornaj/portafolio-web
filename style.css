@@ -426,8 +426,6 @@ input:checked + .slider:before {
     width: 20rem;
     border-radius: 50%;
     overflow: hidden;
-    /* margin-top: -5rem; */
-    /* border: 1px solid red; */
 }
 
 .mascara-foto-perfil > img{
@@ -547,6 +545,7 @@ input:checked + .slider:before {
 .seccion-portafolio {
     color: white;
     grid-area: portafolio;
+    width: 100%;
 }
 
 .carrusel {
@@ -665,6 +664,11 @@ input:checked + .slider:before {
     resize: none;
     color: var(--color-texto-primario);
     background-color: var(--color-fondo-textos);
+}
+
+input:-webkit-autofill {
+    box-shadow: 0 0 0px 1000px var(--color-fondo-textos) inset;
+    -webkit-text-fill-color: var(--color-texto-primario);
 }
 
 .contacto > form > [type=submit] {
