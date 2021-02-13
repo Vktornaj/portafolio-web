@@ -128,4 +128,45 @@ btnAdelante.addEventListener('click', function() {
   scroll_x(carruselPos);
 });
 
+/* Envio de mensaje */
+let inf = {
+  "name": '',
+  "mail": '',
+  "msg": ''
+}
+
+async function postData(url = '', data = {}) {
+  try {
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'aplication/json'
+        },
+        body: JSON.stringify(data)
+      });
+      return response.json();
+  } catch (err ) {
+    throw err;
+  }
+}
+
+document.getElementsByTagName('form')[0].addEventListener("click", function (event) {
+  event.preventDefault();  
+});
+
+document.getElementById('send').addEventListener('click', async function(e) {
+  e.target.disabled = true;
+  e.target.style.setProperty('background-color', 'var(--color-contraste-fuerte)');
+  inf['name'] = document.getElementById('name').value;
+  inf['mail'] = document.getElementById('mail').value;
+  inf['msg'] = document.getElementById('msg').value;
+
+  postData('/api/message', inf)
+  .then(data => {
+    console.log(data);
+    e.target.disabled = false;
+    e.target.style.setProperty('background-color', 'var(--color-azul-claro2)');
+  });
+
+});
 
