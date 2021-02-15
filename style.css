@@ -654,13 +654,27 @@ input:-webkit-autofill {
     -webkit-text-fill-color: var(--color-texto-primario);
 }
 
-.contacto > form > [type=submit] {
+.btn-enviar {
     color: white;
     background-color: var(--color-azul-claro2);
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.contacto > form > [type=submit]:hover {
+.btn-enviar:hover {
     background-color: var(--color-azul-claro);
+}
+
+#icon-successful {
+    display: none;
+    margin-left: 0.5rem;
+}
+
+#icon-unsuccessful {
+    display: none;
+    margin-left: 0.5rem;
 }
 
 /* Footer */

@@ -131,8 +131,8 @@ btnAdelante.addEventListener('click', function() {
 /* Envio de mensaje */
 let inf = {
   "name": '',
-  "mail": '',
-  "msg": ''
+  "email": '',
+  "message": ''
 }
 
 async function postData(url = '', data = {}) {
@@ -156,6 +156,8 @@ document.getElementsByTagName('form')[0].addEventListener("click", function (eve
 
 document.getElementById('send').addEventListener('click', async function(e) {
   
+  e.target.disabled = true;
+
   inf['name'] = document.getElementById('name').value;
   inf['email'] = document.getElementById('mail').value;
   inf['message'] = document.getElementById('msg').value;
@@ -163,14 +165,15 @@ document.getElementById('send').addEventListener('click', async function(e) {
   postData('/api/message', inf)
   .then(data => {
     console.log(data);
-    if (data.status == "ok") {
+    if (data.ok == true) {
       e.target.disabled = true;
       e.target.style.setProperty('background-color', 'green');
-      e.target.value = "Enviado";
-    } else if (data.status == "fail") {
+      document.getElementById('msg-envio').innerText = 'Enviado';
+      document.getElementById('icon-successful').style.setProperty('display', 'block');
+    } else if (data.ok == false) {
       e.target.style.setProperty('background-color', 'red');
-      e.target.value = "Error";
+      document.getElementById('msg-envio').innerText = 'Error al enviar mensaje';
+      document.getElementById('icon-unsuccessful').style.setProperty('display', 'block');
     }
   });
 });
-

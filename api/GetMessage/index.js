@@ -10,10 +10,21 @@ module.exports = async function (context, req) {
         await mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true })
         .then(() => console.log('Database online'))
         .catch(e => console.log(e));
-   
-        const message = new Message( req.body );
 
-        await message.save();
+        const { message, email, name } = req.body;
+        if (!email) {
+            new Throw('No hay correo');
+        }
+        const useragent = req.headers['user-agent'];
+        const xforwardedfor = req.headers['x-forwarded-for'];
+        const date = new Date();
+        const ipadress = null;
+        if (xforwardedfor) {
+            ipadress = xforwardedfor.split(':')[0];
+        }
+        const messagecont = new Message( {email, name, message, date, ipadress, useragent} );
+
+        await messagecont.save();
 
         context.res.status(201).json({
             ok: true,
@@ -27,5 +38,4 @@ module.exports = async function (context, req) {
             msg: 'Mensaje no enviado, intente de nuevo mas tarde'
         });
     }
-
 }
