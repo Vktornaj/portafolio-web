@@ -155,18 +155,22 @@ document.getElementsByTagName('form')[0].addEventListener("click", function (eve
 });
 
 document.getElementById('send').addEventListener('click', async function(e) {
-  e.target.disabled = true;
-  e.target.style.setProperty('background-color', 'var(--color-contraste-fuerte)');
+  
   inf['name'] = document.getElementById('name').value;
-  inf['mail'] = document.getElementById('mail').value;
-  inf['msg'] = document.getElementById('msg').value;
+  inf['email'] = document.getElementById('mail').value;
+  inf['message'] = document.getElementById('msg').value;
 
   postData('/api/message', inf)
   .then(data => {
     console.log(data);
-    e.target.disabled = false;
-    e.target.style.setProperty('background-color', 'var(--color-azul-claro2)');
+    if (data.status == "ok") {
+      e.target.disabled = true;
+      e.target.style.setProperty('background-color', 'green');
+      e.target.value = "Enviado";
+    } else if (data.status == "fail") {
+      e.target.style.setProperty('background-color', 'red');
+      e.target.value = "Error";
+    }
   });
-
 });
 
