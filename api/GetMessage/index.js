@@ -6,12 +6,6 @@ module.exports = async function (context, req) {
 
     const Message = require('../models/message');
 
-
-    const mensaje = uri.toLowerCase();
-    context.res.status(201).json({
-        msg: mensaje
-    });
-
     try {
         await mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true })
         .then(() => console.log('Database online'))
