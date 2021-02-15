@@ -7,6 +7,9 @@ module.exports = async function (context, req) {
     const Message = require('../models/message');
 
     try {
+        context.res.status(201).json({
+            req
+        });
         await mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true })
         .then(() => console.log('Database online'))
         .catch(e => console.log(e));
@@ -15,9 +18,7 @@ module.exports = async function (context, req) {
 
         await message.save();
 
-        context.res.status(201).json({
-            req
-        });
+        
     
     } catch (error) {
         console.log(error);
