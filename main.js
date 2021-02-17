@@ -129,11 +129,7 @@ btnAdelante.addEventListener('click', function() {
 });
 
 /* Envio de mensaje */
-let inf = {
-  "name": '',
-  "email": '',
-  "message": ''
-}
+let inf = {};
 
 async function postData(url = '', data = {}) {
   try {
@@ -161,6 +157,7 @@ document.getElementById('send').addEventListener('click', async function(e) {
   inf['name'] = document.getElementById('name').value;
   inf['email'] = document.getElementById('mail').value;
   inf['message'] = document.getElementById('msg').value;
+  inf['infoBrowser'] = getBrowserInfo();
 
   postData('/api/message', inf)
   .then(data => {
@@ -177,3 +174,19 @@ document.getElementById('send').addEventListener('click', async function(e) {
     }
   });
 });
+
+const getBrowserInfo = function() {
+  let ua= navigator.userAgent, tem, 
+  M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+  if(/trident/i.test(M[1])){
+      tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
+      return 'IE '+(tem[1] || '');
+  }
+  if(M[1]=== 'Chrome'){
+      tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+      if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+  }
+  M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+  if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
+  return M.join(' ');
+};

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const messageSchema = Schema({
     name: {
         type: String,
-        require: true
+        require: false
     },
     email: {
         type: String,
@@ -22,7 +22,7 @@ const messageSchema = Schema({
         type: String,
         require: true
     },
-    useragent: {
+    infoBrowser: {
         type: String,
         require: false
     }

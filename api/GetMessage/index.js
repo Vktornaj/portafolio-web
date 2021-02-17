@@ -11,18 +11,17 @@ module.exports = async function (context, req) {
         .then(() => console.log('Database online'))
         .catch(e => console.log(e));
 
-        const { message, email, name } = req.body;
+        const { message, email, name, infoBrowser } = req.body;
         if (!email) {
             throw new Error('No hay correo');
         }
-        const useragent = req.headers['user-agent'] || 'No se encontro user-agent';
         const xforwardedfor = req.headers['x-forwarded-for'] || 'No se encontro x-forwarded-for';
         const date = new Date();
-        let ipadress = null;
+        let ipaddress = null;
         if (xforwardedfor) {
-            ipadress = xforwardedfor.split(':')[0];
+            ipaddress = xforwardedfor.split(':')[0];
         }
-        const messagecont = new Message( {email, name, message, date, ipadress, useragent} );
+        const messagecont = new Message( {email, name, message, date, ipaddress, infoBrowser} );
 
         await messagecont.save();
 
@@ -35,8 +34,7 @@ module.exports = async function (context, req) {
         console.log(error);
         context.res.status(500).json({
             ok: false,
-            msg: 'Mensaje no enviado, intente de nuevo mas tarde',
-            error
+            msg: 'Mensaje no enviado, intente de nuevo mas tarde'
         });
     }
 }
