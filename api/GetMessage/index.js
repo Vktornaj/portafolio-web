@@ -13,12 +13,12 @@ module.exports = async function (context, req) {
 
         const { message, email, name } = req.body;
         if (!email) {
-            new Throw('No hay correo');
+            throw new Error('No hay correo');
         }
-        const useragent = req.headers['user-agent'];
-        const xforwardedfor = req.headers['x-forwarded-for'];
+        const useragent = req.headers['user-agent'] || 'No se encontro user-agent';
+        const xforwardedfor = req.headers['x-forwarded-for'] || 'No se encontro x-forwarded-for';
         const date = new Date();
-        const ipadress = null;
+        let ipadress = null;
         if (xforwardedfor) {
             ipadress = xforwardedfor.split(':')[0];
         }
@@ -35,7 +35,8 @@ module.exports = async function (context, req) {
         console.log(error);
         context.res.status(500).json({
             ok: false,
-            msg: 'Mensaje no enviado, intente de nuevo mas tarde'
+            msg: 'Mensaje no enviado, intente de nuevo mas tarde',
+            error
         });
     }
 }
