@@ -13,17 +13,31 @@ module.exports = async function (context, req) {
 
         const { message, email, name, infoBrowser } = req.body;
         if (!email) {
-            throw new Error('No hay correo');
+            throw new Error('Email no valido');
         }
-        const xforwardedfor = req.headers['x-forwarded-for'] || 'No se encontro x-forwarded-for';
+        const xforwardedfor = req.headers['x-forwarded-for'];
+        if (!xforwardedfor) {
+            throw new Error('No se permitio establecer la coneccion, intente desde otro dispositivo');
+        }
         const date = new Date();
         let ipaddress = null;
         if (xforwardedfor) {
             ipaddress = xforwardedfor.split(':')[0];
         }
+
+        const np_ip = Array.from(await Message.find({ 'ipaddress': `${ipaddress}` }));
+        const n = np_ip.length;
+        if (n > 10) {
+            const time = np_ip[n - 1].date.getTime() - np_ip[n - 11].date.getTime();
+            if (time < 3600000) {
+                throw new Error('Se alcanzo el limite de solicitudes intenta mas tarde');
+            }
+        }
+
         const messagecont = new Message( {email, name, message, date, ipaddress, infoBrowser} );
 
         await messagecont.save();
+        mongoose.connection.close()
 
         context.res.status(201).json({
             ok: true,
@@ -32,9 +46,9 @@ module.exports = async function (context, req) {
     
     } catch (error) {
         console.log(error);
-        context.res.status(500).json({
+        context.res.status(401).json({
             ok: false,
-            msg: 'Mensaje no enviado, intente de nuevo mas tarde'
+            msg: `Mensaje no enviado, ${error}`
         });
     }
 }

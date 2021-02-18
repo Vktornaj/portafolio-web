@@ -150,12 +150,28 @@ document.getElementsByTagName('form')[0].addEventListener("click", function (eve
   event.preventDefault();  
 });
 
-document.getElementById('send').addEventListener('click', async function(e) {
+document.getElementById('send').addEventListener('click', async function() {
+
+  const mail = document.getElementById('mail');
+  const msgMail = document.getElementsByClassName('msg-invalid-email')[0];
+
+  if (!validateEmail(mail.value)) {
+    mail.classList.add('invalid-email');
+    msgMail.style.setProperty('display', 'inline');
+    return;
+  } else {
+    mail.classList.remove('invalid-email');
+    msgMail.style.setProperty('display', 'none');
+  }
+
+  const button = document.getElementById('send');
+  const msgEnvio = document.getElementById('msg-envio');
   
-  e.target.disabled = true;
+  button.disabled = true;
+  msgEnvio.innerText = 'Enviando...';
 
   inf['name'] = document.getElementById('name').value;
-  inf['email'] = document.getElementById('mail').value;
+  inf['email'] = mail.value;
   inf['message'] = document.getElementById('msg').value;
   inf['infoBrowser'] = getBrowserInfo();
 
@@ -163,14 +179,14 @@ document.getElementById('send').addEventListener('click', async function(e) {
   .then(data => {
     console.log(data);
     if (data.ok == true) {
-      e.target.disabled = true;
-      e.target.style.setProperty('background-color', 'green');
-      document.getElementById('msg-envio').innerText = 'Enviado';
+      button.disabled = true;
+      button.style.setProperty('background-color', 'green');
+      msgEnvio.innerText = 'Enviado';
       document.getElementById('icon-successful').style.setProperty('display', 'block');
     } else if (data.ok == false) {
-      e.target.style.setProperty('background-color', 'red');
-      document.getElementById('msg-envio').innerText = 'Error al enviar mensaje';
-      document.getElementById('icon-unsuccessful').style.setProperty('display', 'block');
+      button.disabled = false;
+      msgEnvio.innerText = 'Enviar';
+      alert(data.msg)
     }
   });
 });
@@ -190,3 +206,12 @@ const getBrowserInfo = function() {
   if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
   return M.join(' ');
 };
+
+const validateEmail = function (mail) 
+{
+ if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail))
+  {
+    return (true)
+  }
+    return (false)
+}

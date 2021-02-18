@@ -642,6 +642,18 @@ input:checked + .slider:before {
     background-color: var(--color-fondo-textos);
 }
 
+.contacto > form > .invalid-email {
+    border: 2px solid rgb(145, 27, 27);
+}
+
+.contacto > form > .msg-invalid-email {
+    border: none;
+    color: rgb(163, 162, 162);
+    text-align: center;
+    font-size: 0.9rem;
+    display: none;
+}
+
 .contacto > form > textarea {
     height: 200px;
     resize: none;
