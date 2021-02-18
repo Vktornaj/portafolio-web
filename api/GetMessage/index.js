@@ -17,24 +17,24 @@ module.exports = async function (context, req) {
         }
         const xforwardedfor = req.headers['x-forwarded-for'];
         if (!xforwardedfor) {
-            throw new Error('No se permitio establecer la coneccion, intente desde otro dispositivo');
+            throw new Error('No se permitio establecer la coneccion, intente desde otro dispositivo.');
         }
         const date = new Date();
-        let ipaddress = null;
+        let ipAddress = null;
         if (xforwardedfor) {
-            ipaddress = xforwardedfor.split(':')[0];
+            ipAddress = xforwardedfor.split(':')[0];
         }
 
-        const np_ip = Array.from(await Message.find({ 'ipaddress': `${ipaddress}` }));
+        const np_ip = Array.from(await Message.find({ 'ipAddress': `${ipAddress}` }));
         const n = np_ip.length;
-        if (n > 10) {
-            const time = np_ip[n - 1].date.getTime() - np_ip[n - 11].date.getTime();
+        if (n >= 10) {
+            const time = np_ip[n - 1].date.getTime() - np_ip[n - 10].date.getTime();
             if (time < 3600000) {
-                throw new Error('Se alcanzo el limite de solicitudes intenta mas tarde');
+                throw new Error('Se alcanzo el limite de solicitudes intenta mas tarde.');
             }
         }
 
-        const messagecont = new Message( {email, name, message, date, ipaddress, infoBrowser} );
+        const messagecont = new Message( {email, name, message, date, ipAddress, infoBrowser} );
 
         await messagecont.save();
         mongoose.connection.close()

@@ -17,7 +17,7 @@ const messageSchema = new Schema({
         type: Date,
         require: true
     },
-    ipaddress: {
+    ipAddress: {
         type: String,
         require: true
     },
