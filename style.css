@@ -767,6 +767,7 @@ input:-webkit-autofill {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .btn-enviar:hover {
