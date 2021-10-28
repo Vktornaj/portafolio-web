@@ -86,7 +86,7 @@ ul li a {
                             "sobremi sobremi imagen"
                             "tecnologias tecnologias tecnologias"
                             "portafolio portafolio portafolio"
-                            "contacto contacto contacto"
+                            "contacto contacto algo"
                             "footer footer footer";
 }
 
@@ -101,6 +101,7 @@ ul li a {
                             "tecnologias tecnologias tecnologias"
                             "portafolio portafolio portafolio"
                             "contacto contacto contacto"
+                            "algo algo algo"
                             "footer footer footer";
     }
 }
@@ -114,6 +115,51 @@ ul li a {
 
 .redes > a {
     text-decoration: none;
+    color: white;
+}
+
+/* Color de iconos */
+.tecnologias-usadas .fa-html5 {
+    color: rgb(179, 65, 30);
+}
+
+.tecnologias-usadas .fa-css3-alt {
+    color: rgb(51, 108, 230);
+}
+
+.tecnologias-usadas .fa-js-square {
+    color: yellow;
+}
+
+.tecnologias-usadas .fa-node-js {
+    color: green;
+}
+
+.tecnologias-usadas .fa-leaf {
+    color: green;
+    position: relative;
+}
+
+.tecnologias-usadas .fa-leaf::after {
+    content: "Mongodb";
+    position: absolute;
+    left: -0.2rem;
+    top: 0.9rem;
+    font-size: 0.5rem;
+    color: white;
+}
+
+.tecnologias-usadas .fa-cloud {
+    color: rgb(0, 0, 182);
+    position: relative;
+}
+
+.tecnologias-usadas .fa-cloud::after {
+    content: "Cloud Azure";
+    position: absolute;
+    left: 0.2rem;
+    top: 0.4rem;
+    font-size: 0.5rem;
     color: white;
 }
 
@@ -474,6 +520,7 @@ input:checked + .slider:before {
 .elemento-habilidad {
     align-items: center;
     display: flex;
+    flex-direction: column;
     text-align: center;
     margin-bottom: 2rem;
 }
@@ -483,7 +530,7 @@ input:checked + .slider:before {
     border: 2px solid var(--color-azul-claro);
     border-radius: 50%;
     height: 4rem;
-    width: 4rem;
+    min-width: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -494,13 +541,13 @@ input:checked + .slider:before {
 .elemento-habilidad > h3 {
     font-weight: 300;
     min-width: 15rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-shadow: 2px 2px 5px var(--color-azul-fuerte);
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .elemento-habilidad {
-        flex-direction: column;
+        flex-direction: row;
     }
 }
 
@@ -522,6 +569,12 @@ input:checked + .slider:before {
     margin-top: 4rem;
     padding: 1rem;
     margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .elemento-tecnologias {
+        margin-top: 2rem;
+    }
 }
 
 /** Portfolio **/
@@ -565,14 +618,54 @@ input:checked + .slider:before {
 }
 
 .elemento-carrusel {
-    border: 1px solid white;
+    /* border: 1px solid white; */
     height: 300px;
     min-width: 230px;
     margin-right: 40px;
+    background-image: url(./dist/image-proyecto02.png);
+    background-position: center;
+    background-size: cover;
 }
 
-.elemento-carrusel:hover {
+/* .elemento-carrusel:hover {
     background-color: var(--color-azul-fuerte);
+} */
+
+.caracteristicas-proyecto {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    font-size: 1.5rem;
+}
+
+.titulo-proyecto {
+    width: 50%;
+    padding-left: 0.2rem;
+    height: 60px;
+}
+
+.tecnologias-usadas {
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    
+}
+
+/* si backdrop es soportado: transparencia y blur */
+@supports ((-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))) {
+    .titulo-proyecto, .tecnologias-usadas {
+        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);
+    }
+}
+
+.tecnologias-usadas > :nth-child(n) {
+    display: flex;
+    justify-content: space-around;
 }
 
 @media (max-width: 768px) {
@@ -619,6 +712,7 @@ input:checked + .slider:before {
     font-size: 2rem;
     display: block;
     margin-bottom: 2rem;
+    font-weight: 100;
 }
 
 .contacto > form {
@@ -673,6 +767,7 @@ input:-webkit-autofill {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .btn-enviar:hover {
@@ -687,6 +782,12 @@ input:-webkit-autofill {
 #icon-unsuccessful {
     display: none;
     margin-left: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .contacto > span {
+        margin-top: 4rem;
+    }
 }
 
 /* Footer */
@@ -785,4 +886,21 @@ input:-webkit-autofill {
     .nav-movil {
         display: block;
     }
+}
+
+/* Mensaje final */ 
+.mensaje-final {
+    color: white;
+    grid-area: algo;
+}
+
+.mensaje-final > h3 {
+    font-size: 2rem;
+    font-weight: 100;
+    margin-top: 0;
+}
+
+.mensaje-final > p {
+    line-height: 20px;
+    font-weight: 100;
 }

@@ -30,7 +30,7 @@ module.exports = async function (context, req) {
         if (n >= 10) {
             const time = np_ip[n - 1].date.getTime() - np_ip[n - 10].date.getTime();
             if (time < 3600000) {
-                throw new Error('Se alcanzo el limite de solicitudes intenta mas tarde.');
+                throw new Error('Se alcanzo el limite de solicitudes, intenta mas tarde.');
             }
         }
 

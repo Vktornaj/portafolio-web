@@ -215,3 +215,4 @@ const validateEmail = function (mail)
   }
     return (false)
 }
+
