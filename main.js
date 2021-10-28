@@ -106,7 +106,7 @@ const nElementos = 5;
 const marginR = 40;
 
 function scroll_x(npos) {
-  console.log(carruselPos);
+  // console.log(carruselPos);
   carrusel.scroll({ 
     top: 0,
     left: npos,
@@ -177,7 +177,7 @@ document.getElementById('send').addEventListener('click', async function() {
 
   postData('/api/message', inf)
   .then(data => {
-    console.log(data);
+    // console.log(data);
     if (data.ok == true) {
       button.disabled = true;
       button.style.setProperty('background-color', 'green');
