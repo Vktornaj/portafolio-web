@@ -299,11 +299,19 @@ input:checked + .slider:before {
 
 /** Sobre mi **/
 .sobre-mi {
-    color: white;
+    color: rgba(255, 255, 255, 0.803);
     display: flex;
     flex-direction: column;
     grid-area: sobremi;
     justify-self: left;
+}
+
+.small-text {
+    font-size: 2rem;
+}
+
+.dark-text {
+    color: rgba(255, 255, 255, 0.233);
 }
 
 .redes {
