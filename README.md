@@ -12,6 +12,12 @@ This web portfolio is a plain web page written in HTML, CSS and JavaScript.
 
 * Open index.html in your favorite web browser
 
+## Screenshots
+
+![alt text](https://github.com/vktornaj/portafolio-web/blob/main/screenshots/01.png?raw=true)
+
+![alt text](https://github.com/vktornaj/portafolio-web/blob/main/screenshots/02.png?raw=true)
+
 ## Authors
 
 Eduardo Garcia
@@ -26,8 +32,3 @@ Eduardo Garcia
 
 This project is licensed under the NONE License - see the LICENSE.md file for details
 
-## Screenshots
-
-![alt text](https://github.com/vktornaj/portafolio-web/blob/main/screenshots/01.png?raw=true)
-
-![alt text](https://github.com/vktornaj/portafolio-web/blob/main/screenshots/02.png?raw=true)
